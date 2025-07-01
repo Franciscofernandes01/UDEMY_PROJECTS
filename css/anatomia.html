@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Anatomia CSS</title>
+    <style>
+        .selector{
+            color: #fff;
+            font-size: 30px;
+            /*múltiplos valores*/
+            border: inset 5px yellowgreen;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            /*funções*/
+            width: calc(100% - 50px);
+            background-color: brown;
+        }
+
+        /*usando pseudo classes*/
+        .selector:hover { /*altera toda a classe*/
+            background-color: #38ad69;
+            color: #fff;
+        }  
+        /*usando pseudo elements*/
+        .selector::first-letter { /*primeira letra alterada, somente 1 elemento*/
+            color: black;
+            font-size: 60px;
+            font-weight: bold;
+        }
+    
+        /*padrão de nomeclatura*/
+        /*dashcase ou camelCase*/
+        /*escolher um padrão, vou adotar dash-case, mais utilizado*/
+    </style>
+</head>
+
+<body>
+    <div class="selector">Conteúdo</div>
+</body>
+
+</html>
