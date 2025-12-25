@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selecionando Elementos com JavaScript</title> 
+    <style>
+        div{
+            border: solid 1px black;
+            margin: 10px;
+            padding: 10px;
+            width: 200px;
+        }
+        #a1{
+            background-color: lightblue;
+        }
+        #b2{
+            background-color: lightgreen;
+        }
+        #c3{
+            background-color: lightcoral;
+        }
+    </style>
+</head>
+<body>
+    <div id="a1">
+        <p >Este é um div com ID.</p>
+    </div>
+    <div id="b2">
+        <p>lista:</p>
+        <ul>
+            <li onmouseover="alterarTamanhoFonte()">primeiro</li>
+            <li>segundo</li>
+            <li>terceiro</li>
+        </ul>
+    </div>
+    <div id="c3">
+        <p>final</p>
+    </div>
+    <button onclick="mudarTexto()">Mudar Texto do Segundo Item</button>
+</body>
+<script>
+    const a1 = document.querySelector('#a1');
+    a1.style.color = 'red';
+
+    function mudarTexto(){
+        const b2 = document.querySelector('#b2 ul li:nth-child(2)');
+        b2.textContent = 'segundo - texto alterado!';
+    }
+    
+    const c3 = document.querySelector('#c3 p');
+    c3.style.fontWeight = 'bold';
+    c3.style.fontSize = '20px';
+
+    function alterarTamanhoFonte(){
+        const itens = document.querySelectorAll('#b2 ul li:nth-child(1)');
+            itens.forEach(item => {
+                item.style.fontSize = '50px';
+            });
+    }
+</script>
+</html>
