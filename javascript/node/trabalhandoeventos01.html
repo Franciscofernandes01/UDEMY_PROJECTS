@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>trabalhando com eventos</title>
+    <style>
+        .conteudo {
+            background-color: lightseagreen;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        div {
+            width: 400px;
+            padding: 40px;
+            text-align: center;
+            border: solid white 2px;
+            background-color: yellow;
+            color: black;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        a {
+            font-size: 18px;
+            font-weight: bold;
+            text-decoration: none;
+            color: black;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body class="conteudo">
+   <div>
+       <a href="https://google.com.br" espera-5-s>google</a>  <!-- Ao clicar no link, a função NavegarEm5s será chamada-->
+   </div> 
+
+   <script>
+
+         function  NavegarEm5s(e){ // Função para navegar em 5 segundos
+            e.preventDefault();// Previne o comportamento padrão do link
+            console.log('navegando em 5 segundos');// Mensagem inicial no console
+
+            for (let i = 1; i <= 5; i++){// Loop para contar os segundos
+                setTimeout(() => {// Função para executar após o tempo definido
+                    console.log(i +" segundos");// Mensagem no console a cada segundo
+                }, i * 1000);// Tempo em milissegundos
+            }
+            setTimeout(() => {// Função para navegar após 5 segundos
+                const link = e.target// Obtém o link clicado
+                window.location.href = link.href;// Navega para o URL do link
+            }, 5000);// Tempo total de 5 segundos
+         }
+
+         //const a = document.querySelector('#link');// Seleciona o elemento <a>
+         //a.onclick = NavegarEm5s;// Atribui a função NavegarEm5s ao evento onclick do link
+
+         const a = document.querySelector('[espera-5-s]');// Seleciona o elemento <a> com o atributo espera-5-s
+         a.onclick = NavegarEm5s;// Atribui a função NavegarEm5s ao evento onclick do link
+   </script>
+</body>
+</html>
