@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trabalhando eventos 03</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+
+        .esquerda {
+            width: 40%;
+            height: 80%;
+            border: 2px solid chartreuse;
+            border-radius: 8px;
+            background-color: #993eae;
+            display: flex;
+            flex-wrap: wrap;
+            align-content: flex-start;
+            padding: 10px;
+        }
+        .direita {
+            width: 40%;
+            height: 80%;
+            border: 2px solid #333;
+            border-radius: 8px;
+            background-color: #d3e914;
+        }
+
+        .item {
+            width: 300px;
+            height: 100px;
+            margin: 10px;
+            background-color: rgb(232, 71, 8);
+            border: 10px solid #000;
+            border-radius: 4px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: grab;
+        }
+    </style>
+</head>
+<body>
+    <div class="esquerda" zona>
+        <div class="item">1</div>
+        <div class="item">2</div>
+        <div class="item">3</div>
+        <div class="item">4</div>
+    </div>
+    
+    <div class="direita" zona></div>
+    <script>
+       const itens = document.querySelectorAll('.item');//pega todos os itens
+       itens.forEach((item, index) => {//percorre cada item
+        item.draggable = true;//torna o item arrastável
+        item.id = item.id || `draggable-item-${index}`;//atribui um id único se não tiver
+        item.ondragstart = e => //evento disparado ao iniciar o arrasto
+            e.dataTransfer.setData('item-id', e.target.id);//armazena o id do item sendo arrastado
+       });
+
+       const dropzones = document.querySelectorAll('[zona]');//pega todas as zonas de drop
+       dropzones.forEach(zona => {//percorre cada zona
+            zona.ondragover = e => e.preventDefault();//permite o drop na zona
+            zona.ondrop = e => {//evento disparado ao soltar o item na zona
+                const itemId = e.dataTransfer.getData('item-id');//recupera o id do item arrastado
+                const item = document.getElementById(itemId);//pega o elemento do item
+                zona.appendChild(item);//adiciona o item à zona de drop
+            }
+       })
+    </script>
+</body>
+</html>

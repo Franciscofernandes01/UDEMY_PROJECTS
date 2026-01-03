@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trabalhando com eventos 02</title>
+    <style>
+        .conteudo.exercicio {
+            background-color: lightgray;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        div {
+            width: 200px;
+            height: 100px;
+            background-color: coral;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body class="conteudo exercicio"><!-- Exercicio: Criar um elemento que possa ser arrastado pela tela -->
+    <div>Elemento</div><!-- Exercicio: Criar um elemento que possa ser arrastado pela tela -->
+    <script>
+        const elemento = document.querySelector('div');// Seleciona o elemento div
+        elemento.style.position = 'absolute';// Define a posição como absoluta para permitir movimentação
+
+        elemento.onmousemove = function(e) {// Evento disparado quando o mouse se move sobre o elemento
+          elemento.style.cursor = 'move';// Altera o cursor para indicar que o elemento pode ser movido
+          if (e.buttons){// Verifica se algum botão do mouse está pressionado
+            e.target.style.top = `${e.clientY - (elemento.clientHeight/ 2)}px`;// Atualiza a posição vertical do elemento
+            e.target.style.left = `${e.clientX - (elemento.offsetWidth / 2)}px`;// Atualiza a posição horizontal do elemento
+          }
+        };
+    </script>
+</body>
+</html>
