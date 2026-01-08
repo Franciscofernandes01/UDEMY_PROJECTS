@@ -38,4 +38,6 @@ function loteria(min,max){//crio a função e passo os parametros min e max
 
 for(let i = 0; i < 6; i++){
     console.log(`número válido sorteado: ${loteria(1,60)}`);
-}
+
+
+
